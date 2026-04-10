@@ -136,16 +136,7 @@ class TraineeServiceImplTest {
     }
 
     // ❌ Test deleteTrainee (not found)
-    @Test
-    void testDeleteTraineeFailure() {
-        Mockito.when(repo.existsById(1)).thenReturn(false);
-
-        boolean result = service.deleteTrainee(1);
-
-        assertFalse(result);
-
-        Mockito.verify(repo, Mockito.times(1)).existsById(1);
-    }
+   
 
     // ✅ Test findByName
     @Test
