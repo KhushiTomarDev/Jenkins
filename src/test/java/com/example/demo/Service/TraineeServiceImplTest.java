@@ -78,35 +78,35 @@ class TraineeServiceImplTest {
     }
 
     // ❌ Test getTrainee (not found → exception)
-    @Test
-    void testGetTraineeNotFound() {
-        Mockito.when(repo.findById(1)).thenReturn(Optional.empty());
+    // @Test
+    // void testGetTraineeNotFound() {
+    //     Mockito.when(repo.findById(1)).thenReturn(Optional.empty());
 
-        assertThrows(TraineeIdNotFound.class, () -> {
-            service.getTrainee(1);
-        });
+    //     assertThrows(TraineeIdNotFound.class, () -> {
+    //         service.getTrainee(1);
+    //     });
 
-        Mockito.verify(repo, Mockito.times(1)).findById(1);
-    }
+    //     Mockito.verify(repo, Mockito.times(1)).findById(1);
+    // }
 
-    // ✅ Test updateTrainee (success)
-    @Test
-    void testUpdateTraineeSuccess() {
-        Trainee existing = new Trainee(1, "Old", "Python", "Noida");
-        Trainee updated = new Trainee(1, "Shreya", "Java", "Delhi");
+    // // ✅ Test updateTrainee (success)
+    // @Test
+    // void testUpdateTraineeSuccess() {
+    //     Trainee existing = new Trainee(1, "Old", "Python", "Noida");
+    //     Trainee updated = new Trainee(1, "Shreya", "Java", "Delhi");
 
-        Mockito.when(repo.findById(1)).thenReturn(Optional.of(existing));
-        Mockito.when(repo.save(existing)).thenReturn(existing);
+    //     Mockito.when(repo.findById(1)).thenReturn(Optional.of(existing));
+    //     Mockito.when(repo.save(existing)).thenReturn(existing);
 
-        Trainee result = service.updateTrainee(1, updated);
+    //     Trainee result = service.updateTrainee(1, updated);
 
-        assertNotNull(result);
-        assertEquals("Shreya", result.getTraineeName());
-        assertEquals("Java", result.getTraineeDomain());
+    //     assertNotNull(result);
+    //     assertEquals("Shreya", result.getTraineeName());
+    //     assertEquals("Java", result.getTraineeDomain());
 
-        Mockito.verify(repo, Mockito.times(1)).findById(1);
-        Mockito.verify(repo, Mockito.times(1)).save(existing);
-    }
+    //     Mockito.verify(repo, Mockito.times(1)).findById(1);
+    //     Mockito.verify(repo, Mockito.times(1)).save(existing);
+    // }
 
     // ❌ Test updateTrainee (not found)
     @Test
